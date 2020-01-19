@@ -1,16 +1,11 @@
 package main
 
 import (
-	"crypto/hmac"
-	"crypto/sha256"
-	"encoding/base64"
 	"fmt"
+	"github.com/zshamrock/hmac-generator/hmac"
 	"gopkg.in/urfave/cli.v1"
 	"log"
-	"math/rand"
 	"os"
-	"strconv"
-	"time"
 )
 
 const (
@@ -64,17 +59,6 @@ func action(c *cli.Context) error {
 		return fmt.Errorf("id should be provided to identify the client")
 	}
 	secret := c.String(secretFlagName)
-	generateMACAuthorization(id, secret)
+	fmt.Println(hmac.GenerateMACAuthorization(id, secret))
 	return nil
-}
-
-// TODO: Unit test
-func generateMACAuthorization(id string, secret string) {
-	rand.Seed(time.Now().UnixNano())
-	nonce := rand.Int()
-	mac := hmac.New(sha256.New, []byte(secret))
-	timestamp := time.Now().UnixNano() / int64(time.Millisecond)
-	mac.Write([]byte(strconv.Itoa(int(timestamp)) + strconv.Itoa(nonce)))
-	sum := base64.StdEncoding.EncodeToString(mac.Sum(nil))
-	fmt.Printf("Authorization: MAC ts=%d,id=%s,nonce=%d,mac=%s\n", timestamp, id, nonce, sum)
 }
