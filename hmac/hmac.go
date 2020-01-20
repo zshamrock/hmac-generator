@@ -17,5 +17,5 @@ func GenerateMACAuthorization(id string, secret string) string {
 	timestamp := time.Now().UnixNano() / int64(time.Millisecond)
 	mac.Write([]byte(strconv.Itoa(int(timestamp)) + strconv.Itoa(nonce)))
 	sum := base64.StdEncoding.EncodeToString(mac.Sum(nil))
-	return fmt.Sprintf("Authorization: MAC ts=%d,id=%s,nonce=%d,mac=%s", timestamp, id, nonce, sum)
+	return fmt.Sprintf("Authorization: HMAC ts=%d,id=%s,nonce=%d,mac=%s", timestamp, id, nonce, sum)
 }
