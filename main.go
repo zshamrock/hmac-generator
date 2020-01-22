@@ -22,7 +22,7 @@ const (
 func main() {
 	app := cli.NewApp()
 	app.Name = appName
-	app.Usage = `Generates MAC authorization`
+	app.Usage = `Generates HMAC authorization HTTP Header`
 	app.Author = "(c) Aliaksandr Kazlou"
 	app.Metadata = map[string]interface{}{"GitHub": "https://github.com/zshamrock/hmac-generator"}
 	app.Version = version
@@ -31,15 +31,15 @@ func main() {
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
 			Name:  fmt.Sprintf("%s", idFlagName),
-			Usage: fmt.Sprintf("Authorization key id"),
+			Usage: fmt.Sprintf("authorization key id"),
 		},
 		cli.StringFlag{
 			Name:  fmt.Sprintf("%s, s", secretFlagName),
-			Usage: fmt.Sprintf("Authorization secret"),
+			Usage: fmt.Sprintf("authorization secret"),
 		},
 		cli.StringFlag{
 			Name:  fmt.Sprintf("%s, sf", secretFileFlagName),
-			Usage: "File from which to read authorization secret",
+			Usage: "file from which to read authorization secret",
 		},
 	}
 	app.Action = action
