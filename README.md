@@ -29,6 +29,18 @@ GLOBAL OPTIONS:
 
 ## Description
 
+From [Wikipedia](https://en.wikipedia.org/wiki/HMAC):
+
+> In cryptography, an HMAC (sometimes expanded as either keyed-hash message authentication code or hash-based message 
+>authentication code) is a specific type of message authentication code (MAC) involving a cryptographic hash function 
+>and a secret cryptographic key. As with any MAC, it may be used to simultaneously verify both the data integrity and 
+>the authenticity of a message. Any cryptographic hash function, such as SHA-256 or SHA-3, may be used in the 
+>calculation of an HMAC; the resulting MAC algorithm is termed HMAC-X, where X is the hash function used 
+>(e.g. HMAC-SHA256 or HMAC-SHA3). The cryptographic strength of the HMAC depends upon the cryptographic strength of 
+>the underlying hash function, the size of its hash output, and the size and quality of the key.
+
+- - - 
+
 ```
 $ hmac-generator --id foo --secret bar
 Authorization: HMAC ts=1579862657754,id=foo,nonce=3396422525437371841,mac=l4MFVlY2zYiGk1bhMME/4TDr9k6U85ATwIySP0+F4GQ=
