@@ -39,7 +39,7 @@ func main() {
 		},
 		cli.StringFlag{
 			Name:  fmt.Sprintf("%s, sf", secretFileFlagName),
-			Usage: "file from which to read authorization secret",
+			Usage: "file from which to read authorization secret (not implemented yet)",
 		},
 	}
 	app.Action = action
